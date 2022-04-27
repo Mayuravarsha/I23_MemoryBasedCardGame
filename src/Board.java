@@ -15,8 +15,8 @@ public class Board extends JFrame {
     private Card c1;
     private Card c2;
     private Timer t;
-    private int Mode = 0;
-    private int turns_taken = 0;
+    private int Mode;
+    private int turns_taken = 1;
     private int pairs[] = { 8, 18 };
     private int rows[] = { 4, 6 };
     public List<Integer> card_vals = new ArrayList<Integer>();
@@ -26,7 +26,7 @@ public class Board extends JFrame {
     public Board() {
 
         List<Card> cardsList = new ArrayList<Card>();
-
+        this.Mode = 1;
         for (int i = 0; i < pairs[Mode]; i++) {
             card_vals.add(i);
             card_vals.add(i);
@@ -49,6 +49,7 @@ public class Board extends JFrame {
         }
         this.cards = cardsList;
         // set up the timer
+        // Check code
         t = new Timer(750, new ActionListener() {
 
             public void actionPerformed(ActionEvent ae) {
@@ -60,18 +61,13 @@ public class Board extends JFrame {
 
         // set up the board itself
         Container pane = getContentPane();
-        pane.setLayout(new GridLayout(rows[Mode], 5));
+        pane.setLayout(new GridLayout(this.rows[Mode], this.rows[Mode] + 1));
 
         for (Card c : cards) {
             pane.add(c);
         }
 
         setTitle("Memory Match");
-
-    }
-
-    public void instructions() {
-        JOptionPane.showMessageDialog(this, "Try and match all cards in least turns possible");
 
     }
 
@@ -102,7 +98,7 @@ public class Board extends JFrame {
         // set up the board itself
         this.getContentPane().removeAll();
         Container pane2 = getContentPane();
-        pane2.setLayout(new GridLayout(this.rows[Mode], 5));
+        pane2.setLayout(new GridLayout(this.rows[Mode], this.rows[Mode] + 1));
         for (Card c : cards) {
 
             pane2.add(c);

@@ -63,7 +63,7 @@ class MyFrame
         // constructor, to initialize the components
         // with default values.
         public MyFrame() {
-                setTitle("Registration Form");
+                setTitle("Player Details");
                 setBounds(300, 90, 900, 600);
                 setDefaultCloseOperation(EXIT_ON_CLOSE);
                 setResizable(false);
@@ -71,7 +71,7 @@ class MyFrame
                 c = getContentPane();
                 c.setLayout(null);
 
-                title = new JLabel("Registration Form");
+                title = new JLabel("Player Details");
                 title.setFont(new Font("Arial", Font.PLAIN, 30));
                 title.setSize(300, 30);
                 title.setLocation(300, 30);
@@ -85,7 +85,7 @@ class MyFrame
 
                 tname = new JTextField();
                 tname.setFont(new Font("Arial", Font.PLAIN, 15));
-                tname.setSize(190, 20);
+                tname.setSize(200, 20);
                 tname.setLocation(200, 100);
                 c.add(tname);
 
@@ -227,8 +227,16 @@ class MyFrame
                                 tout.setText(data + data1 + data2 + data3);
                                 tout.setEditable(false);
                                 res.setText("<html><p>Registered successfully</p></html>");
+
                                 this.Registered();
                                 this.instructions();
+
+                                Board b = new Board(); // Creational Design Pattern- Singleton
+                                b.setPreferredSize(new Dimension(1030, 1030)); // need to use this instead of setSize
+                                b.setLocation(500, 250);
+                                b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                b.pack(); // Automatically adjusts size of cards based on change in panel size
+                                b.setVisible(true); // Displays Board panel
                         } else {
                                 tout.setText("");
                                 resadd.setText("");
@@ -251,12 +259,6 @@ class MyFrame
                         resadd.setText(def);
                 }
                 // this.instructions();
-                Board b = new Board(); // Creational Design Pattern- Singleton
-                b.setPreferredSize(new Dimension(1030, 1030)); // need to use this instead of setSize
-                b.setLocation(500, 250);
-                b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                b.pack();
-                b.setVisible(true);
         }
 
 }
