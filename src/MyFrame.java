@@ -59,6 +59,22 @@ class MyFrame
                         "Australia", "Bangladesh", "South Africa", "New Zealand",
                         "West Indies", "England", "Afghanistan", "Scotland",
                         "Nepal", "Bhutan", "Myanmar", "Kenya", "Zimbabwe", "Namibia" };
+        /*
+         * public MyFrame(Board b) {
+         * b.setPreferredSize(new Dimension(1030, 1030)); // need to use this instead of
+         * setSize
+         * b.setLocation(200, 250);
+         * b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         * b.pack(); // Automatically adjusts size of cards based on change in panel
+         * size
+         * b.setVisible(true); // Displays Board panel
+         * setVisible(true);
+         * setBounds(300, 90, 900, 600);
+         * setDefaultCloseOperation(EXIT_ON_CLOSE);
+         * setResizable(false);
+         * 
+         * }
+         */
 
         // constructor, to initialize the components
         // with default values.
@@ -171,7 +187,7 @@ class MyFrame
 
                 tout = new JTextArea();
                 tout.setFont(new Font("Arial", Font.PLAIN, 15));
-                tout.setSize(300, 400);
+                tout.setSize(300, 200);
                 tout.setLocation(500, 100);
                 tout.setLineWrap(true);
                 tout.setEditable(false);
@@ -194,13 +210,22 @@ class MyFrame
         }
 
         public void Registered() {
-                JOptionPane.showMessageDialog(this, "Registered Successful. Please close this to view Instructions.");
+                JOptionPane.showMessageDialog(this, "Registered Successful. Click 'OK' to view Instructions.");
         }
 
         public void instructions() {
-                JOptionPane.showMessageDialog(this, "Try and match all cards in least turns possible");
+                JOptionPane.showMessageDialog(this,
+                                "<html><p>Registered successfully</p><p>Try and match all cards in least turns possible</p></html>");
 
         }
+
+        public void confirm() {
+                Object[] options = { "OK", "CANCEL" };
+                JOptionPane.showOptionDialog(null, "Click OK to continue", "Confirmation",
+                                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+                                null, options, options[0]);
+        }
+
 
         // method actionPerformed()
         // to get the action performed
@@ -230,13 +255,15 @@ class MyFrame
 
                                 this.Registered();
                                 this.instructions();
-
-                                Board b = new Board(); // Creational Design Pattern- Singleton
+                                this.confirm();
+                                Board b = new Board();
                                 b.setPreferredSize(new Dimension(1030, 1030)); // need to use this instead of setSize
-                                b.setLocation(500, 250);
+                                b.setLocation(200, 250);
                                 b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                 b.pack(); // Automatically adjusts size of cards based on change in panel size
                                 b.setVisible(true); // Displays Board panel
+                                // this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+                                b = null;
                         } else {
                                 tout.setText("");
                                 resadd.setText("");
