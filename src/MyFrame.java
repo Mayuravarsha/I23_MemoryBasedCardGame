@@ -219,14 +219,6 @@ class MyFrame
 
         }
 
-        public void confirm() {
-                Object[] options = { "OK", "CANCEL" };
-                JOptionPane.showOptionDialog(null, "Click OK to continue", "Confirmation",
-                                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
-                                null, options, options[0]);
-        }
-
-
         // method actionPerformed()
         // to get the action performed
         // by the user and act accordingly
@@ -255,7 +247,6 @@ class MyFrame
 
                                 this.Registered();
                                 this.instructions();
-                                this.confirm();
                                 Board b = new Board();
                                 b.setPreferredSize(new Dimension(1030, 1030)); // need to use this instead of setSize
                                 b.setLocation(200, 250);
