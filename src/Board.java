@@ -24,9 +24,14 @@ public class Board extends JFrame {
     public List<Card> Sorted_cardsList = new ArrayList<Card>();
 
     public Board() {
-
+        // MyFrame P1 = new MyFrame();
+        // P1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        String[] options = { "Easy", "Hard" };
+        Mode = JOptionPane.showOptionDialog(null, "Mode",
+                "Select the difficulty level ",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        System.out.println(Mode);
         List<Card> cardsList = new ArrayList<Card>();
-        this.Mode = 1;
         for (int i = 0; i < pairs[Mode]; i++) {
             card_vals.add(i);
             card_vals.add(i);
@@ -61,7 +66,7 @@ public class Board extends JFrame {
 
         // set up the board itself
         Container pane = getContentPane();
-        pane.setLayout(new GridLayout(this.rows[Mode], this.rows[Mode] + 1));
+        pane.setLayout(new GridLayout(this.rows[Mode], this.rows[Mode]));
 
         for (Card c : cards) {
             pane.add(c);
@@ -98,7 +103,7 @@ public class Board extends JFrame {
         // set up the board itself
         this.getContentPane().removeAll();
         Container pane2 = getContentPane();
-        pane2.setLayout(new GridLayout(this.rows[Mode], this.rows[Mode] + 1));
+        pane2.setLayout(new GridLayout(this.rows[Mode], this.rows[Mode]));
         for (Card c : cards) {
 
             pane2.add(c);
